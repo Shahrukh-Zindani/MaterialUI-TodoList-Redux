@@ -6,18 +6,20 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 let AddTodo = ({ dispatch }) => {
   let input
+
+  const onClick = (event) => {
+    event.preventDefault();
+    var todo = input.getValue();
+    if(todo=='') return 
+    else {
+      dispatch(addTodo(todo))
+      var form = document.getElementById("myForm");
+      form.reset()
+    }
+  }
   return (
     <div>
-      <form id="myForm" onSubmit={e => {
-        e.preventDefault()
-        if (!input.getValue().trim()) {
-          return
-        }
-        dispatch(addTodo(input.getValue()))
-        var form = document.getElementById("myForm");
-        form.reset() 
-      }}>
-
+      <form id="myForm" >
         <Paper style={{width: '90%', leftMargin: '15px'}} zDepth={1}>
           <div 
             style={{marginLeft: '10px'}}
@@ -35,7 +37,8 @@ let AddTodo = ({ dispatch }) => {
         <RaisedButton 
           type="submit" 
           label='Add todo' 
-          primary={true}  
+          primary={true} 
+          onClick={onClick}
         />
       </form>      
     </div>
