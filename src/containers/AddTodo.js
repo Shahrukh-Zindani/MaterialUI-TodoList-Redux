@@ -11,7 +11,7 @@ let AddTodo = ({ dispatch }) => {
 
   return (
     <MuiThemeProvider>
-      <div>
+      <div >
         <form id="myForm" onSubmit={e => {
           e.preventDefault()
           if(!input.length)
@@ -21,8 +21,8 @@ let AddTodo = ({ dispatch }) => {
           document.getElementById("myForm").reset();
         }}>
         
-          <Paper style={{width: '90%', leftMargin: '15px'}} zDepth={1}>
-            <div style={{marginLeft: '10px'}}>
+          <Paper style={{width: '90%', marginLeft: '25px'}} zDepth={1}>
+            <div style={{marginLeft: '20px'}}>
                 <TextField 
                   hintText="What needs to be done?"
                   className="AddText" 
@@ -31,6 +31,7 @@ let AddTodo = ({ dispatch }) => {
                 />
                 <br/>
                 <RaisedButton 
+                  style={{marginBottom: '20px'}}
                   type="submit" 
                   label='Add todo' 
                   primary={true}  

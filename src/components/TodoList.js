@@ -1,17 +1,20 @@
 import React, { PropTypes } from 'react'
 import Todo from './Todo'
+import List from 'material-ui/List';
 
 const TodoList = ({ todos, onTodoClick, onTodoDelete }) => (
-  <ul>
-    {todos.map(todo =>
-      <Todo
-        key={todo.id}
-        {...todo}
-        onClick={() => onTodoClick(todo.id)}
-        onDelete={() => onTodoDelete(todo.id)}
-      />
-    )}
-  </ul>
+  <List style={{marginLeft: '5%'}}>    
+    <ul>
+      {todos.map(todo =>
+        <Todo
+          key={todo.id}
+          {...todo}
+          onClick={() => onTodoClick(todo.id)}
+          onDelete={() => onTodoDelete(todo.id)}
+        />
+      )}
+    </ul>
+  </List>
 )
 
 TodoList.propTypes = {
