@@ -11,30 +11,34 @@ let AddTodo = ({ dispatch }) => {
 
   return (
     <MuiThemeProvider>
-    <div>
-      <form onSubmit={e => {
-        e.preventDefault()
-        if (!input.value.trim()) {
-          return
-        }
-        dispatch(addTodo(input.value))
-        input.value = ''
-      }}>
-      
-      <Paper style={{width: '90%', leftMargin: '15px'}} zDepth={1}>
-          <div 
-            style={{marginLeft: '10px'}}
-          >
-        <input ref={node => {
-          input = node
-        }} />
-        <button type="submit">
-          Add Todo
-        </button>
+      <div>
+        <form id="myForm" onSubmit={e => {
+          e.preventDefault()
+          if(!input.length)
+            return
+          dispatch(addTodo(input))
+          input=''
+          document.getElementById("myForm").reset();
+        }}>
+        
+          <Paper style={{width: '90%', leftMargin: '15px'}} zDepth={1}>
+            <div style={{marginLeft: '10px'}}>
+                <TextField 
+                  hintText="What needs to be done?"
+                  className="AddText" 
+                  fullWidth={true}
+                  onChange={(e) => input=e.target.value}
+                />
+                <br/>
+                <RaisedButton 
+                  type="submit" 
+                  label='Add todo' 
+                  primary={true}  
+                />
+            </div>
+          </Paper>
+        </form>
       </div>
-      </Paper>
-      </form>
-    </div>
     </MuiThemeProvider>
   )
 }
